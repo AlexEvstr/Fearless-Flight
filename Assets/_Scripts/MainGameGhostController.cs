@@ -1,6 +1,6 @@
 using System.Collections;
-using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainGameGhostController : MonoBehaviour
@@ -9,6 +9,7 @@ public class MainGameGhostController : MonoBehaviour
 
     private void Start()
     {
+        _blackScreen.color = new Color(0, 0, 0, 1.0f);
         StartCoroutine(ShowGame());
     }
 
@@ -22,5 +23,15 @@ public class MainGameGhostController : MonoBehaviour
             aIndex -= 0.01f;
             yield return new WaitForSeconds(0.01f);
         }
+    }
+
+    public void BackToHome()
+    {
+        SceneManager.LoadScene("GhostMenu");
+    }
+
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene("GhostGame");
     }
 }
