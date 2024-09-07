@@ -25,7 +25,7 @@ public class PreGameGhostController : MonoBehaviour
     private IEnumerator ShowWhiteScreen()
     {
         float aIndex = 0f;
-        yield return new WaitForSeconds(7.0f);
+        yield return new WaitForSeconds(6.5f);
 
         while (aIndex < 1)
         {

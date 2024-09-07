@@ -415,7 +415,7 @@ Transform:
   m_GameObject: {fileID: 164458106}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: -3.9, z: 0}
+  m_LocalPosition: {x: -0.3, y: -4.1, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 221416305}
   - component: {fileID: 221416304}
   m_Layer: 0
-  m_Name: backBtn
+  m_Name: DownBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -853,6 +853,7 @@ GameObject:
   - component: {fileID: 453925846}
   - component: {fileID: 453925848}
   - component: {fileID: 453925847}
+  - component: {fileID: 453925849}
   m_Layer: 5
   m_Name: BlackScreen
   m_TagString: Untagged
@@ -892,7 +893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -917,6 +918,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453925845}
   m_CullTransparentMesh: 1
+--- !u!225 &453925849
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453925845}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &458799049
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +997,7 @@ GameObject:
   - component: {fileID: 585979351}
   - component: {fileID: 585979353}
   m_Layer: 0
-  m_Name: straightBtn
+  m_Name: UpBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1402,6 +1415,8 @@ GameObject:
   m_Component:
   - component: {fileID: 999330566}
   - component: {fileID: 999330565}
+  - component: {fileID: 999330567}
+  - component: {fileID: 999330568}
   m_Layer: 0
   m_Name: Human
   m_TagString: Untagged
@@ -1476,6 +1491,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1379756414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &999330567
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999330564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: df82bb23c42fc4b8499692c9bab0c291, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &999330568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999330564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4b92aad2de147b680deab473d6908c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1048686795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,7 +1643,7 @@ GameObject:
   - component: {fileID: 1314637716}
   - component: {fileID: 1314637715}
   m_Layer: 0
-  m_Name: rightBtn
+  m_Name: RightBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1717,7 +1765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1379756414
 Transform:
   m_ObjectHideFlags: 0
@@ -2222,7 +2270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1516873376
 Transform:
   m_ObjectHideFlags: 0
@@ -2278,7 +2326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecc79e06859e4b3caff420ac4ec94ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blackScreen: {fileID: 453925847}
+  fadeCanvas: {fileID: 453925849}
 --- !u!4 &1536385014
 Transform:
   m_ObjectHideFlags: 0
@@ -2306,6 +2354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3384b266b905a4f61a566e5fca44c318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeCanvas: {fileID: 453925849}
+  _playerMovement: {fileID: 999330568}
+  _player: {fileID: 999330564}
   leftButton: {fileID: 1664402834}
   rightButton: {fileID: 1314637715}
   upButton: {fileID: 585979353}
@@ -2506,7 +2557,7 @@ GameObject:
   - component: {fileID: 1664402835}
   - component: {fileID: 1664402834}
   m_Layer: 0
-  m_Name: leftBtn
+  m_Name: LeftBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

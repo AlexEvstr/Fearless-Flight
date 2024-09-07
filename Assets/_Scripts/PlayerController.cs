@@ -1,14 +1,17 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private int playerX = 2; // Начальная позиция персонажа по оси X (в комнате C5)
-    private int playerY = 2; // Начальная позиция персонажа по оси Y (в комнате C5)
+    private int playerX = 2;
+    private int playerY = 2;
 
     public GameMap gameMap;
+    public CanvasGroup fadeCanvas;
+    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private GameObject _player;
 
-    // UI Кнопки
     public Button leftButton;
     public Button rightButton;
     public Button upButton;
@@ -16,78 +19,117 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        gameMap = new GameMap(); // Создаем карту
-        EnterRoom(playerX, playerY); // Входим в стартовую комнату (C5)
+        gameMap = new GameMap();
+        EnterRoom(playerX, playerY);
 
-        // Привязываем кнопки к методам
-        leftButton.onClick.AddListener(() => MovePlayer(0, -1)); // Влево
-        rightButton.onClick.AddListener(() => MovePlayer(0, 1)); // Вправо
-        upButton.onClick.AddListener(() => MovePlayer(-1, 0));   // Вверх
-        downButton.onClick.AddListener(() => MovePlayer(1, 0));  // Вниз
+        leftButton.onClick.AddListener(() => MovePlayer(0, -1));
+        rightButton.onClick.AddListener(() => MovePlayer(0, 1));
+        upButton.onClick.AddListener(() => MovePlayer(-1, 0));
+        downButton.onClick.AddListener(() => MovePlayer(1, 0));
     }
 
-    // Метод для входа в комнату
     void EnterRoom(int x, int y)
     {
         Debug.Log($"Player entered room at: ({x}, {y})");
+        _player.transform.position = Vector2.zero;
+        TurnOnButtons();
 
-        // Получаем текущую комнату
         Room currentRoom = gameMap.GetRoom(x, y);
 
-        // Проверяем, можно ли двигаться влево и обновляем кнопку
         leftButton.interactable = currentRoom.canMoveLeft;
 
-        // Проверяем, можно ли двигаться вправо и обновляем кнопку
         rightButton.interactable = currentRoom.canMoveRight;
 
-        // Проверяем, можно ли двигаться вверх и обновляем кнопку
         upButton.interactable = currentRoom.canMoveUp;
 
-        // Проверяем, можно ли двигаться вниз и обновляем кнопку
         downButton.interactable = currentRoom.canMoveDown;
     }
 
-    // Метод для обновления позиции персонажа
+    private void TurnOffButtons()
+    {
+        leftButton.gameObject.SetActive(false);
+        rightButton.gameObject.SetActive(false);
+        upButton.gameObject.SetActive(false);
+        downButton.gameObject.SetActive(false);
+    }
+
+    private void TurnOnButtons()
+    {
+        leftButton.gameObject.SetActive(true);
+        rightButton.gameObject.SetActive(true);
+        upButton.gameObject.SetActive(true);
+        downButton.gameObject.SetActive(true);
+    }
+
     public void MovePlayer(int xChange, int yChange)
     {
-        int newX = playerX + xChange; // Изменяем X для вертикальных перемещений (вверх-вниз)
-        int newY = playerY + yChange; // Изменяем Y для горизонтальных перемещений (влево-вправо)
+        StartCoroutine(MoveBehavior(xChange, yChange));
+        TurnOffButtons();
+    }
+
+    private IEnumerator MoveBehavior(int xChange, int yChange)
+    {
+        int newX = playerX + xChange;
+        int newY = playerY + yChange;
 
         Debug.Log($"Trying to move player to: ({newX}, {newY})");
 
-        // Проверяем, существует ли комната на новой позиции и можно ли двигаться в эту сторону
         if (gameMap.GetRoom(newX, newY) != null)
         {
             Room currentRoom = gameMap.GetRoom(playerX, playerY);
-
-            // Проверка для движения влево
+            
             if (yChange == -1 && currentRoom.canMoveLeft)
             {
                 playerY = newY;
-            }
-            // Проверка для движения вправо
+                _playerMovement.MoveLeft();
+            } 
             else if (yChange == 1 && currentRoom.canMoveRight)
             {
                 playerY = newY;
+                _playerMovement.MoveRight();
             }
-            // Проверка для движения вверх
             else if (xChange == -1 && currentRoom.canMoveUp)
             {
                 playerX = newX;
-            }
-            // Проверка для движения вниз
+                _playerMovement.MoveUp();
+            }            
             else if (xChange == 1 && currentRoom.canMoveDown)
             {
                 playerX = newX;
+                _playerMovement.MoveDown();
             }
 
-            Debug.Log($"Player moved to: ({playerX}, {playerY})");
+            yield return new WaitForSeconds(2.0f);
 
-            EnterRoom(playerX, playerY); // Входим в новую комнату и обновляем кнопки
+            Debug.Log($"Player moved to: ({playerX}, {playerY})");
+            StartCoroutine(FadeToBlack());            
         }
         else
         {
             Debug.Log($"No room exists at: ({newX}, {newY})");
         }
+    }
+
+    private IEnumerator FadeToBlack()
+    {
+        while (fadeCanvas.alpha < 1)
+        {
+            fadeCanvas.alpha += Time.deltaTime;
+            yield return null;
+        }
+        fadeCanvas.alpha = 1;
+
+        EnterRoom(playerX, playerY);
+        StartCoroutine(FadeToClear());
+    }
+
+    private IEnumerator FadeToClear()
+    {
+        while (fadeCanvas.alpha > 0)
+        {
+            fadeCanvas.alpha -= Time.deltaTime;
+            yield return null;
+        }
+        fadeCanvas.alpha = 0;
     }
 }
