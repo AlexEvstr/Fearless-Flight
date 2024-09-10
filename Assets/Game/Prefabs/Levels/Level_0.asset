@@ -22,9 +22,9 @@ MonoBehaviour:
     canMoveDown: 0
     canMoveLeft: 0
     canMoveRight: 1
-    hasGhost: 0
+    hasGhost: 1
     hasKey: 0
-    ghostPosition: {x: 0, y: 0}
+    ghostPosition: {x: 0, y: 3}
     keyPosition: {x: 0, y: 0}
   - roomX: 1
     roomY: 0
