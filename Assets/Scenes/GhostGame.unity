@@ -1417,6 +1417,9 @@ GameObject:
   - component: {fileID: 999330565}
   - component: {fileID: 999330567}
   - component: {fileID: 999330568}
+  - component: {fileID: 999330569}
+  - component: {fileID: 999330570}
+  - component: {fileID: 999330571}
   m_Layer: 0
   m_Name: Human
   m_TagString: Untagged
@@ -1522,6 +1525,90 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef4b92aad2de147b680deab473d6908c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &999330569
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999330564}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.006609589}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.352, y: 1.072}
+    newSize: {x: 0.88, y: 2.68}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.352, y: 0.96184105}
+  m_EdgeRadius: 0
+--- !u!50 &999330570
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999330564}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &999330571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999330564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea0477ed847f94f8dbfbaf0950418989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1048686795
@@ -1765,7 +1852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1379756414
 Transform:
   m_ObjectHideFlags: 0
@@ -2270,7 +2357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1516873376
 Transform:
   m_ObjectHideFlags: 0
@@ -2307,6 +2394,7 @@ GameObject:
   - component: {fileID: 1536385014}
   - component: {fileID: 1536385013}
   - component: {fileID: 1536385015}
+  - component: {fileID: 1536385016}
   m_Layer: 0
   m_Name: MainGameController
   m_TagString: Untagged
@@ -2354,6 +2442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3384b266b905a4f61a566e5fca44c318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ghostPrefab: {fileID: 8037432414657643533, guid: 0186b42762b7e4643a460d672b1f8ca2, type: 3}
+  keyPrefab: {fileID: 8441580270795201773, guid: 44ede40cf1597407284e9a5d4123053d, type: 3}
   fadeCanvas: {fileID: 453925849}
   _playerMovement: {fileID: 999330568}
   _player: {fileID: 999330564}
@@ -2361,6 +2451,20 @@ MonoBehaviour:
   rightButton: {fileID: 1314637715}
   upButton: {fileID: 585979353}
   downButton: {fileID: 221416304}
+--- !u!114 &1536385016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536385012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4482fb7cbafdf4a87998be586765554b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - {fileID: 11400000, guid: 72c42f136008242e69a836daaecdc141, type: 2}
 --- !u!1 &1543947366
 GameObject:
   m_ObjectHideFlags: 0
