@@ -144,8 +144,8 @@ MonoBehaviour:
     canMoveRight: 1
     hasGhost: 0
     hasKey: 1
-    ghostPosition: {x: 1, y: 0}
-    keyPosition: {x: 0, y: 0}
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 1, y: 0}
   - roomX: 5
     roomY: 0
     canMoveUp: 1

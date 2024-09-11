@@ -71,7 +71,6 @@ public class PlayerController : MonoBehaviour
 
     void EnterRoom(int x, int y)
     {
-        Debug.Log($"Player entered room at: ({x}, {y})");
         _player.transform.position = Vector2.zero;
         TurnOnButtons();
 
@@ -105,7 +104,6 @@ public class PlayerController : MonoBehaviour
     {
         // Если xChange меняется, это движение влево/вправо
         // Если yChange меняется, это движение вверх/вниз
-        Debug.Log($"Нажата кнопка: {xChange}, {yChange}");
 
         StartCoroutine(MoveBehavior(xChange, yChange));
         TurnOffButtons();  // Отключаем кнопки
@@ -116,8 +114,6 @@ public class PlayerController : MonoBehaviour
         // Определяем новые координаты для игрока
         int newX = playerX + xChange;  // Влево/вправо
         int newY = playerY + yChange;  // Вверх/вниз
-
-        Debug.Log($"Trying to move player to: ({newX}, {newY})");
 
         Room currentRoom = rooms[playerX, playerY];
 

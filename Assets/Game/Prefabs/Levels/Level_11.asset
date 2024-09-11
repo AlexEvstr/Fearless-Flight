@@ -98,10 +98,10 @@ MonoBehaviour:
     keyPosition: {x: 0, y: 0}
   - roomX: 5
     roomY: 2
-    canMoveUp: 0
+    canMoveUp: 1
     canMoveDown: 0
     canMoveLeft: 1
-    canMoveRight: 1
+    canMoveRight: 0
     hasGhost: 0
     hasKey: 1
     ghostPosition: {x: 0, y: 0}

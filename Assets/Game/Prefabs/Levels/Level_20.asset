@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd0a40fe7a82146e5bfea126510b2874, type: 3}
-  m_Name: Level_17
+  m_Name: Level_20
   m_EditorClassIdentifier: 
-  width: 8
-  height: 4
-  playerStartPosition: {x: 0, y: 3}
+  width: 6
+  height: 6
+  playerStartPosition: {x: 0, y: 0}
   rooms:
   - roomX: 0
-    roomY: 3
-    canMoveUp: 0
+    roomY: 0
+    canMoveUp: 1
     canMoveDown: 0
     canMoveLeft: 0
     canMoveRight: 1
@@ -27,31 +27,61 @@ MonoBehaviour:
     ghostPosition: {x: 0, y: 0}
     keyPosition: {x: 0, y: 0}
   - roomX: 0
-    roomY: 0
-    canMoveUp: 0
-    canMoveDown: 0
+    roomY: 1
+    canMoveUp: 1
+    canMoveDown: 1
     canMoveLeft: 0
     canMoveRight: 1
     hasGhost: 0
     hasKey: 0
     ghostPosition: {x: 0, y: 0}
     keyPosition: {x: 0, y: 0}
-  - roomX: 1
-    roomY: 3
-    canMoveUp: 0
-    canMoveDown: 1
-    canMoveLeft: 1
-    canMoveRight: 1
-    hasGhost: 0
-    hasKey: 0
-    ghostPosition: {x: 0, y: 0}
-    keyPosition: {x: 0, y: 0}
-  - roomX: 1
+  - roomX: 0
     roomY: 2
     canMoveUp: 1
     canMoveDown: 1
     canMoveLeft: 0
-    canMoveRight: 0
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 0
+    roomY: 3
+    canMoveUp: 1
+    canMoveDown: 1
+    canMoveLeft: 0
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 0
+    roomY: 4
+    canMoveUp: 1
+    canMoveDown: 1
+    canMoveLeft: 0
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 0
+    roomY: 5
+    canMoveUp: 0
+    canMoveDown: 1
+    canMoveLeft: 0
+    canMoveRight: 1
+    hasGhost: 1
+    hasKey: 0
+    ghostPosition: {x: 0, y: 3}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 1
+    roomY: 0
+    canMoveUp: 1
+    canMoveDown: 0
+    canMoveLeft: 1
+    canMoveRight: 1
     hasGhost: 0
     hasKey: 0
     ghostPosition: {x: 0, y: 0}
@@ -60,13 +90,53 @@ MonoBehaviour:
     roomY: 1
     canMoveUp: 1
     canMoveDown: 1
-    canMoveLeft: 0
-    canMoveRight: 0
+    canMoveLeft: 1
+    canMoveRight: 1
     hasGhost: 1
     hasKey: 0
     ghostPosition: {x: 2, y: 0}
     keyPosition: {x: 0, y: 0}
   - roomX: 1
+    roomY: 2
+    canMoveUp: 1
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 0
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 1
+    roomY: 3
+    canMoveUp: 1
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 0
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 1
+    roomY: 4
+    canMoveUp: 1
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 0
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 1
+    roomY: 5
+    canMoveUp: 0
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 2
     roomY: 0
     canMoveUp: 1
     canMoveDown: 0
@@ -77,49 +147,69 @@ MonoBehaviour:
     ghostPosition: {x: 0, y: 0}
     keyPosition: {x: 0, y: 0}
   - roomX: 2
-    roomY: 3
+    roomY: 1
     canMoveUp: 0
-    canMoveDown: 0
+    canMoveDown: 1
     canMoveLeft: 1
     canMoveRight: 1
-    hasGhost: 1
+    hasGhost: 0
     hasKey: 0
-    ghostPosition: {x: 0, y: 2}
+    ghostPosition: {x: 0, y: 0}
     keyPosition: {x: 0, y: 0}
   - roomX: 2
-    roomY: 0
+    roomY: 4
+    canMoveUp: 1
+    canMoveDown: 0
+    canMoveLeft: 1
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 2
+    roomY: 5
     canMoveUp: 0
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 3
+    roomY: 0
+    canMoveUp: 1
+    canMoveDown: 0
+    canMoveLeft: 1
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 3
+    roomY: 1
+    canMoveUp: 0
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 3
+    roomY: 4
+    canMoveUp: 1
     canMoveDown: 0
     canMoveLeft: 1
     canMoveRight: 1
     hasGhost: 1
     hasKey: 0
-    ghostPosition: {x: 0, y: -2}
+    ghostPosition: {x: 0, y: -3}
     keyPosition: {x: 0, y: 0}
   - roomX: 3
-    roomY: 3
+    roomY: 5
     canMoveUp: 0
-    canMoveDown: 0
-    canMoveLeft: 1
-    canMoveRight: 1
-    hasGhost: 0
-    hasKey: 0
-    ghostPosition: {x: 0, y: 0}
-    keyPosition: {x: 0, y: 0}
-  - roomX: 3
-    roomY: 0
-    canMoveUp: 0
-    canMoveDown: 0
-    canMoveLeft: 1
-    canMoveRight: 1
-    hasGhost: 0
-    hasKey: 0
-    ghostPosition: {x: 0, y: 0}
-    keyPosition: {x: 0, y: 0}
-  - roomX: 4
-    roomY: 3
-    canMoveUp: 0
-    canMoveDown: 0
+    canMoveDown: 1
     canMoveLeft: 1
     canMoveRight: 1
     hasGhost: 0
@@ -128,8 +218,58 @@ MonoBehaviour:
     keyPosition: {x: 0, y: 0}
   - roomX: 4
     roomY: 0
-    canMoveUp: 0
+    canMoveUp: 1
     canMoveDown: 0
+    canMoveLeft: 1
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 4
+    roomY: 1
+    canMoveUp: 1
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 4
+    roomY: 2
+    canMoveUp: 1
+    canMoveDown: 1
+    canMoveLeft: 0
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 4
+    roomY: 3
+    canMoveUp: 1
+    canMoveDown: 1
+    canMoveLeft: 0
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 4
+    roomY: 4
+    canMoveUp: 1
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 4
+    roomY: 5
+    canMoveUp: 0
+    canMoveDown: 1
     canMoveLeft: 1
     canMoveRight: 1
     hasGhost: 0
@@ -137,92 +277,62 @@ MonoBehaviour:
     ghostPosition: {x: 0, y: 0}
     keyPosition: {x: 0, y: 0}
   - roomX: 5
-    roomY: 3
-    canMoveUp: 0
+    roomY: 0
+    canMoveUp: 1
     canMoveDown: 0
     canMoveLeft: 1
-    canMoveRight: 1
-    hasGhost: 0
+    canMoveRight: 0
+    hasGhost: 1
     hasKey: 0
-    ghostPosition: {x: 0, y: 0}
+    ghostPosition: {x: 2, y: 0}
     keyPosition: {x: 0, y: 0}
   - roomX: 5
     roomY: 1
     canMoveUp: 1
     canMoveDown: 1
-    canMoveLeft: 0
+    canMoveLeft: 1
     canMoveRight: 0
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 5
+    roomY: 2
+    canMoveUp: 1
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 0
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 5
+    roomY: 3
+    canMoveUp: 1
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 0
+    hasGhost: 1
+    hasKey: 0
+    ghostPosition: {x: 2, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 5
+    roomY: 4
+    canMoveUp: 1
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 0
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 5
+    roomY: 5
+    canMoveUp: 0
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 1
     hasGhost: 0
     hasKey: 1
     ghostPosition: {x: 0, y: 0}
-    keyPosition: {x: 0, y: 3}
-  - roomX: 5
-    roomY: 0
-    canMoveUp: 1
-    canMoveDown: 0
-    canMoveLeft: 1
-    canMoveRight: 1
-    hasGhost: 0
-    hasKey: 0
-    ghostPosition: {x: 0, y: 0}
-    keyPosition: {x: 0, y: 0}
-  - roomX: 6
-    roomY: 3
-    canMoveUp: 0
-    canMoveDown: 0
-    canMoveLeft: 1
-    canMoveRight: 1
-    hasGhost: 0
-    hasKey: 0
-    ghostPosition: {x: 0, y: 0}
-    keyPosition: {x: 0, y: 0}
-  - roomX: 6
-    roomY: 0
-    canMoveUp: 0
-    canMoveDown: 0
-    canMoveLeft: 1
-    canMoveRight: 1
-    hasGhost: 0
-    hasKey: 0
-    ghostPosition: {x: 0, y: 0}
-    keyPosition: {x: 0, y: 0}
-  - roomX: 7
-    roomY: 3
-    canMoveUp: 0
-    canMoveDown: 1
-    canMoveLeft: 1
-    canMoveRight: 0
-    hasGhost: 1
-    hasKey: 0
-    ghostPosition: {x: 2, y: 0}
-    keyPosition: {x: 0, y: 0}
-  - roomX: 7
-    roomY: 2
-    canMoveUp: 1
-    canMoveDown: 1
-    canMoveLeft: 0
-    canMoveRight: 0
-    hasGhost: 0
-    hasKey: 0
-    ghostPosition: {x: 0, y: 0}
-    keyPosition: {x: 0, y: 0}
-  - roomX: 7
-    roomY: 1
-    canMoveUp: 1
-    canMoveDown: 1
-    canMoveLeft: 0
-    canMoveRight: 0
-    hasGhost: 0
-    hasKey: 0
-    ghostPosition: {x: 0, y: 0}
-    keyPosition: {x: 0, y: 0}
-  - roomX: 7
-    roomY: 0
-    canMoveUp: 1
-    canMoveDown: 0
-    canMoveLeft: 1
-    canMoveRight: 0
-    hasGhost: 0
-    hasKey: 0
-    ghostPosition: {x: 0, y: 0}
-    keyPosition: {x: 0, y: 0}
+    keyPosition: {x: 1, y: 0}

@@ -81,7 +81,7 @@ MonoBehaviour:
     canMoveUp: 0
     canMoveDown: 0
     canMoveLeft: 1
-    canMoveRight: 1
+    canMoveRight: 0
     hasGhost: 0
     hasKey: 0
     ghostPosition: {x: 0, y: 0}
