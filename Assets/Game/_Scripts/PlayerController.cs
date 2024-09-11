@@ -119,41 +119,36 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log($"Trying to move player to: ({newX}, {newY})");
 
-        // Проверяем, что новая комната существует и движение разрешено
-        if (newX >= 0 && newX < rooms.GetLength(0) && newY >= 0 && newY < rooms.GetLength(1) && rooms[newX, newY] != null)
+        Room currentRoom = rooms[playerX, playerY];
+
+        // Проверяем возможность движения по горизонтали (xChange)
+        if (xChange == -1 && currentRoom.canMoveLeft)
         {
-            Room currentRoom = rooms[playerX, playerY];
-
-            // Проверяем возможность движения по горизонтали (xChange)
-            if (xChange == -1 && currentRoom.canMoveLeft)
-            {
-                playerX = newX;
-                _playerMovement.MoveLeft();
-            }
-            else if (xChange == 1 && currentRoom.canMoveRight)
-            {
-                playerX = newX;
-                _playerMovement.MoveRight();
-            }
-            // Проверяем возможность движения по вертикали (yChange)
-            else if (yChange == 1 && currentRoom.canMoveUp)  // Вверх (по оси y)
-            {
-                playerY = newY;
-                _playerMovement.MoveUp();
-            }
-            else if (yChange == -1 && currentRoom.canMoveDown)  // Вниз (по оси y)
-            {
-                playerY = newY;
-                _playerMovement.MoveDown();
-            }
-
-            yield return new WaitForSeconds(2.0f);
-
-            StartCoroutine(FadeToBlack());
+            playerX = newX;
+            _playerMovement.MoveLeft();
         }
-        else
+        else if (xChange == 1 && currentRoom.canMoveRight)
         {
-            Debug.Log($"Комната по направлению ({newX}, {newY}) не существует или движение запрещено.");
+            playerX = newX;
+            _playerMovement.MoveRight();
+        }
+        // Проверяем возможность движения по вертикали (yChange)
+        else if (yChange == 1 && currentRoom.canMoveUp)  // Вверх (по оси y)
+        {
+            playerY = newY;
+            _playerMovement.MoveUp();
+        }
+        else if (yChange == -1 && currentRoom.canMoveDown)  // Вниз (по оси y)
+        {
+            playerY = newY;
+            _playerMovement.MoveDown();
+        }
+
+        yield return new WaitForSeconds(2.0f);
+
+        if (!PlayerTriggerDetector._isTriggered)
+        {
+            StartCoroutine(FadeToBlack());
         }
     }
 

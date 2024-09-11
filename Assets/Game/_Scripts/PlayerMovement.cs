@@ -9,9 +9,9 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private Transform playerTransform;
 
-    private bool isMoving = false;  // Флаг, чтобы предотвратить одновременное начало нового движения
+    private bool isMoving = false;
 
-    void Start()
+    void Awake()
     {
         // Инициализация компонентов
         animator = GetComponent<Animator>();
@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         float duration = 3f;  // Продолжительность движения
         float elapsedTime = 0f;
 
-        while (elapsedTime < duration)
+        while (elapsedTime < duration && isMoving)
         {
             // Перемещаем персонажа вдоль осей X и Y в 2D
             playerTransform.Translate(direction * moveSpeed * Time.deltaTime);
@@ -80,6 +80,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void StopMovement()
     {
+        isMoving = false;
+        // Если корутина движения запущена, останавливаем ее
+
         animator.ResetTrigger("MoveUp");
         animator.ResetTrigger("MoveDown");
         animator.ResetTrigger("MoveLeft");

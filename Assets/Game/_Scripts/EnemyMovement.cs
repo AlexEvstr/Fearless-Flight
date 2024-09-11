@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private float _speed = 2.0f;
+    private float _speed = 2.5f;
 
     private void Start()
     {
@@ -20,6 +20,5 @@ public class EnemyMovement : MonoBehaviour
             transform.position = Vector2.MoveTowards(currentPosition, targetPosition, _speed * Time.deltaTime);
             yield return new WaitForSeconds(0.01f);
         }
-
     }
 }
