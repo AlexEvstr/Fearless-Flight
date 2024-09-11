@@ -49,6 +49,13 @@ public class PlayerTriggerDetector : MonoBehaviour
             {
                 currentLevelIndex++;
                 PlayerPrefs.SetInt("LevelIndex", currentLevelIndex);
+                int roadIndex = PlayerPrefs.GetInt("GhostRoadSprite", 0);
+                roadIndex++;
+                if (roadIndex == 3)
+                {
+                    roadIndex = 0;
+                }
+                PlayerPrefs.SetInt("GhostRoadSprite", roadIndex);
 
                 int bestLevel = PlayerPrefs.GetInt("BestLevel", 0);
                 if (currentLevelIndex > bestLevel)
