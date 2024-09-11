@@ -46,6 +46,7 @@ public class PlayerTriggerDetector : MonoBehaviour
 
     private IEnumerator ShowWinPanelAndLoadNextLevel()
     {
+        _canvasGroup.alpha = 0;
         while (_canvasGroup.alpha < 1)
         {
             _canvasGroup.alpha += 0.01f;
@@ -54,12 +55,13 @@ public class PlayerTriggerDetector : MonoBehaviour
         _canvasGroup.alpha = 1;
         GameObject levelPassed = Instantiate(_levelPassedPrefab);
         Destroy(levelPassed, 1.9f);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         SceneManager.LoadScene("GhostGame");
     }
 
     private IEnumerator ShowLosePanelAndLoadNextLevel()
     {
+        _canvasGroup.alpha = 0;
         while (_canvasGroup.alpha < 1)
         {
             _canvasGroup.alpha += 0.01f;
@@ -68,7 +70,7 @@ public class PlayerTriggerDetector : MonoBehaviour
         _canvasGroup.alpha = 1;
         GameObject levelFailed = Instantiate(_levelFailedPrefab);
         Destroy(levelFailed, 1.9f);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         SceneManager.LoadScene("GhostGame");
     }
 }

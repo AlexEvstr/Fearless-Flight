@@ -48,13 +48,13 @@ MonoBehaviour:
     keyPosition: {x: 0, y: 0}
   - roomX: 2
     roomY: 0
-    canMoveUp: 0
+    canMoveUp: 1
     canMoveDown: 0
     canMoveLeft: 0
     canMoveRight: 0
     hasGhost: 1
     hasKey: 0
-    ghostPosition: {x: 0, y: 3}
+    ghostPosition: {x: 0, y: -3}
     keyPosition: {x: 0, y: 0}
   - roomX: 3
     roomY: 1

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd0a40fe7a82146e5bfea126510b2874, type: 3}
-  m_Name: Level_7
+  m_Name: Level_12
   m_EditorClassIdentifier: 
-  width: 4
-  height: 2
-  playerStartPosition: {x: 0, y: 0}
+  width: 5
+  height: 3
+  playerStartPosition: {x: 0, y: 2}
   rooms:
   - roomX: 0
-    roomY: 0
+    roomY: 2
     canMoveUp: 0
     canMoveDown: 0
     canMoveLeft: 0
@@ -27,8 +27,8 @@ MonoBehaviour:
     ghostPosition: {x: 0, y: 0}
     keyPosition: {x: 0, y: 0}
   - roomX: 1
-    roomY: 0
-    canMoveUp: 1
+    roomY: 2
+    canMoveUp: 0
     canMoveDown: 0
     canMoveLeft: 1
     canMoveRight: 1
@@ -36,21 +36,31 @@ MonoBehaviour:
     hasKey: 0
     ghostPosition: {x: 0, y: 0}
     keyPosition: {x: 0, y: 0}
-  - roomX: 1
-    roomY: 1
+  - roomX: 2
+    roomY: 2
     canMoveUp: 0
+    canMoveDown: 1
+    canMoveLeft: 1
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 2
+    roomY: 1
+    canMoveUp: 1
     canMoveDown: 1
     canMoveLeft: 0
     canMoveRight: 0
     hasGhost: 1
     hasKey: 0
-    ghostPosition: {x: 0, y: 3}
+    ghostPosition: {x: -3, y: 0}
     keyPosition: {x: 0, y: 0}
   - roomX: 2
     roomY: 0
-    canMoveUp: 0
+    canMoveUp: 1
     canMoveDown: 0
-    canMoveLeft: 1
+    canMoveLeft: 0
     canMoveRight: 1
     hasGhost: 0
     hasKey: 0
@@ -61,8 +71,28 @@ MonoBehaviour:
     canMoveUp: 0
     canMoveDown: 0
     canMoveLeft: 1
+    canMoveRight: 0
+    hasGhost: 1
+    hasKey: 0
+    ghostPosition: {x: 0, y: 3}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 3
+    roomY: 2
+    canMoveUp: 0
+    canMoveDown: 0
+    canMoveLeft: 1
+    canMoveRight: 1
+    hasGhost: 0
+    hasKey: 0
+    ghostPosition: {x: 0, y: 0}
+    keyPosition: {x: 0, y: 0}
+  - roomX: 4
+    roomY: 2
+    canMoveUp: 0
+    canMoveDown: 0
+    canMoveLeft: 1
     canMoveRight: 1
     hasGhost: 0
     hasKey: 1
     ghostPosition: {x: 0, y: 0}
-    keyPosition: {x: 1, y: 0}
+    keyPosition: {x: 0, y: 1}
