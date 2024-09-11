@@ -19,7 +19,14 @@ public class PreGameGhostController : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(ShowWhiteScreen());
+        string shouldShowPreGame = PlayerPrefs.GetString("ShouldShowPreGame", "yes");
+        if (shouldShowPreGame == "yes")
+            StartCoroutine(ShowWhiteScreen());
+        else
+        {
+            _mainGame.SetActive(true);
+            _preGame.SetActive(false);
+        }
     }
 
     private IEnumerator ShowWhiteScreen()

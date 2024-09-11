@@ -34,6 +34,8 @@ public class PlayerTriggerDetector : MonoBehaviour
             _isTriggered = true;
 
             StartCoroutine(ShowLosePanelAndReloadLevel());
+
+            PlayerPrefs.SetString("ShouldShowPreGame", "no");
         }
 
         if (collision.gameObject.CompareTag("Key"))
@@ -61,6 +63,8 @@ public class PlayerTriggerDetector : MonoBehaviour
             {
                 StartCoroutine(ShowEndOfGame());
             }
+
+            PlayerPrefs.SetString("ShouldShowPreGame", "no");
         }
     }
 

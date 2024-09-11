@@ -16,6 +16,7 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.SetString("ShouldShowPreGame", "yes");
         _backgroundIndex = PlayerPrefs.GetInt("BackgroundIndex", 0);
         _background.sprite = _backgroundSprites[_backgroundIndex];
 
