@@ -8,10 +8,15 @@ public class MainGameGhostController : MonoBehaviour
     [SerializeField] private CanvasGroup fadeCanvas;
     [SerializeField] private Image _roadImage;
     [SerializeField] private Sprite[] _roadSprites;
+    private int roadIndex;
 
     private void Start()
     {
-        int roadIndex = PlayerPrefs.GetInt("GhostRoadSprite", 0);
+        if (SceneManager.GetActiveScene().name == "GhostGame")
+            roadIndex = PlayerPrefs.GetInt("GhostRoadSprite", 0);
+        else
+            roadIndex = PlayerPrefs.GetInt("PlaneRoadSprite", 0);
+
         _roadImage.sprite = _roadSprites[roadIndex];
 
         fadeCanvas.alpha = 1;
@@ -31,11 +36,17 @@ public class MainGameGhostController : MonoBehaviour
 
     public void BackToHome()
     {
-        SceneManager.LoadScene("GhostMenu");
+        if (SceneManager.GetActiveScene().name == "GhostGame")
+            SceneManager.LoadScene("GhostMenu");
+        else
+            SceneManager.LoadScene("PlaneMenu");
     }
 
     public void ReloadGame()
     {
-        SceneManager.LoadScene("GhostGame");
+        if (SceneManager.GetActiveScene().name == "GhostGame")
+            SceneManager.LoadScene("GhostGame");
+        else
+            SceneManager.LoadScene("PlaneMenu");
     }
 }

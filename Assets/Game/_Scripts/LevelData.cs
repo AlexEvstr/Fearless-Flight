@@ -3,10 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewLevelData", menuName = "Level Data", order = 51)]
 public class LevelData : ScriptableObject
 {
-    public int width;   // Ширина уровня
-    public int height;  // Высота уровня
-    public Vector2 playerStartPosition;  // Начальная позиция игрока
-    public RoomData[] rooms;  // Массив комнат, каждая комната хранит свою конфигурацию
+    public int width;
+    public int height;
+    public Vector2 playerStartPosition;
+    public RoomData[] rooms;
 }
 
 [System.Serializable]

@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuLevelChanger : MonoBehaviour
@@ -17,23 +15,41 @@ public class MenuLevelChanger : MonoBehaviour
     {
         _prevLevelBtn.onClick.AddListener(ChoosePrevLevel);
         _nextLevelBtn.onClick.AddListener(ChooseNextLevel);
-
-        _levelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
-        _bestLevel = PlayerPrefs.GetInt("BestLevel", 0);
+        if (SceneManager.GetActiveScene().name == "GhostMenu")
+        {
+            _levelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
+            _bestLevel = PlayerPrefs.GetInt("BestLevel", 0);
+        }
+        else
+        {
+            _levelIndex = PlayerPrefs.GetInt("PlaneLevelIndex", 0);
+            _bestLevel = PlayerPrefs.GetInt("PlaneBestLevel", 0);
+        }
+        
         UpdateLevelWithText();
     }
 
     public void ChooseNextLevel()
     {
         _levelIndex++;
-        PlayerPrefs.SetInt("LevelIndex", _levelIndex);
+
+        if (SceneManager.GetActiveScene().name == "GhostMenu")
+            PlayerPrefs.SetInt("LevelIndex", _levelIndex);
+        else
+            PlayerPrefs.SetInt("PlaneLevelIndex", _levelIndex);
+
         UpdateLevelWithText();
     }
 
     public void ChoosePrevLevel()
     {
         _levelIndex--;
-        PlayerPrefs.SetInt("LevelIndex", _levelIndex);
+
+        if (SceneManager.GetActiveScene().name == "GhostMenu")
+            PlayerPrefs.SetInt("LevelIndex", _levelIndex);
+        else
+            PlayerPrefs.SetInt("PlaneLevelIndex", _levelIndex);
+
         UpdateLevelWithText();
     }
 

@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController Instance;  // Для простого доступа из других классов, таких как LevelManager
+    public static PlayerController Instance;
 
-    public GameObject ghostPrefab;  // Префаб призрака
-    public GameObject keyPrefab;    // Префаб ключа
+    public GameObject ghostPrefab;
+    public GameObject keyPrefab;
     private GameObject currentGhost;
     private GameObject currentKey;
 
@@ -23,29 +23,26 @@ public class PlayerController : MonoBehaviour
     public Button upButton;
     public Button downButton;
 
-    private Room[,] rooms;  // Двумерный массив для хранения комнат уровня
+    private Room[,] rooms;
 
     private void Awake()
     {
-        Instance = this;  // Устанавливаем статический экземпляр
+        Instance = this;
     }
 
     void Start()
     {
-        // Подключение слушателей событий для кнопок движения
-        leftButton.onClick.AddListener(() => MovePlayer(-1, 0));  // Влево — изменяем X
-        rightButton.onClick.AddListener(() => MovePlayer(1, 0));  // Вправо — изменяем X
-        upButton.onClick.AddListener(() => MovePlayer(0, 1));     // Вверх — изменяем Y
-        downButton.onClick.AddListener(() => MovePlayer(0, -1));  // Вниз — изменяем Y
+        leftButton.onClick.AddListener(() => MovePlayer(-1, 0));
+        rightButton.onClick.AddListener(() => MovePlayer(1, 0));
+        upButton.onClick.AddListener(() => MovePlayer(0, 1));
+        downButton.onClick.AddListener(() => MovePlayer(0, -1));
     }
 
 
     public void LoadLevel(LevelData levelData)
     {
-        // Устанавливаем размеры уровня динамически
         rooms = new Room[levelData.width, levelData.height];
 
-        // Загружаем комнаты из LevelData
         foreach (RoomData roomData in levelData.rooms)
         {
             rooms[roomData.roomX, roomData.roomY] = new Room(
@@ -60,11 +57,9 @@ public class PlayerController : MonoBehaviour
             );
         }
 
-        // Устанавливаем начальную позицию игрока из данных уровня
         playerX = (int)levelData.playerStartPosition.x;
         playerY = (int)levelData.playerStartPosition.y;
 
-        // Перемещаем игрока в начальную комнату
         EnterRoom(playerX, playerY);
     }
 
@@ -102,22 +97,18 @@ public class PlayerController : MonoBehaviour
 
     public void MovePlayer(int xChange, int yChange)
     {
-        // Если xChange меняется, это движение влево/вправо
-        // Если yChange меняется, это движение вверх/вниз
 
         StartCoroutine(MoveBehavior(xChange, yChange));
-        TurnOffButtons();  // Отключаем кнопки
+        TurnOffButtons();
     }
 
     private IEnumerator MoveBehavior(int xChange, int yChange)
     {
-        // Определяем новые координаты для игрока
-        int newX = playerX + xChange;  // Влево/вправо
-        int newY = playerY + yChange;  // Вверх/вниз
+        int newX = playerX + xChange;
+        int newY = playerY + yChange;
 
         Room currentRoom = rooms[playerX, playerY];
 
-        // Проверяем возможность движения по горизонтали (xChange)
         if (xChange == -1 && currentRoom.canMoveLeft)
         {
             playerX = newX;
@@ -128,13 +119,12 @@ public class PlayerController : MonoBehaviour
             playerX = newX;
             _playerMovement.MoveRight();
         }
-        // Проверяем возможность движения по вертикали (yChange)
-        else if (yChange == 1 && currentRoom.canMoveUp)  // Вверх (по оси y)
+        else if (yChange == 1 && currentRoom.canMoveUp)
         {
             playerY = newY;
             _playerMovement.MoveUp();
         }
-        else if (yChange == -1 && currentRoom.canMoveDown)  // Вниз (по оси y)
+        else if (yChange == -1 && currentRoom.canMoveDown)
         {
             playerY = newY;
             _playerMovement.MoveDown();
@@ -151,7 +141,6 @@ public class PlayerController : MonoBehaviour
 
     private void HandleRoomObjects(Room room)
     {
-        // Обработка призраков
         if (room.hasGhost)
         {
             if (currentGhost == null)
@@ -165,7 +154,6 @@ public class PlayerController : MonoBehaviour
             Destroy(currentGhost);
         }
 
-        // Обработка ключей
         if (room.hasKey)
         {
             if (currentKey == null)

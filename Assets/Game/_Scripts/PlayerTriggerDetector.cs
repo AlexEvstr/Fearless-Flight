@@ -14,6 +14,7 @@ public class PlayerTriggerDetector : MonoBehaviour
     [SerializeField] private GameObject _endOfGame;
     [SerializeField] private Button[] _buttons;
     [SerializeField] private GameAudioController gameAudioController;
+    private int currentLevelIndex;
 
     private void Start()
     {
@@ -47,25 +48,52 @@ public class PlayerTriggerDetector : MonoBehaviour
             Destroy(collision.gameObject);
             _isTriggered = true;
 
-            int currentLevelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
+            if (SceneManager.GetActiveScene().name == "GhostGame")
+                currentLevelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
+            else
+                currentLevelIndex = PlayerPrefs.GetInt("PlaneLevelIndex", 0);
+
             if (_levelManager.levels.Length > currentLevelIndex + 1)
             {
                 currentLevelIndex++;
-                PlayerPrefs.SetInt("LevelIndex", currentLevelIndex);
-                int roadIndex = PlayerPrefs.GetInt("GhostRoadSprite", 0);
-                roadIndex++;
-                if (roadIndex == 3)
-                {
-                    roadIndex = 0;
-                }
-                PlayerPrefs.SetInt("GhostRoadSprite", roadIndex);
 
-                int bestLevel = PlayerPrefs.GetInt("BestLevel", 0);
-                if (currentLevelIndex > bestLevel)
+                if (SceneManager.GetActiveScene().name == "GhostGame")
                 {
-                    bestLevel = currentLevelIndex;
-                    PlayerPrefs.SetInt("BestLevel", bestLevel);
+                    PlayerPrefs.SetInt("LevelIndex", currentLevelIndex);
+                    int roadIndex = PlayerPrefs.GetInt("GhostRoadSprite", 0);
+                    roadIndex++;
+                    if (roadIndex == 3)
+                    {
+                        roadIndex = 0;
+                    }
+                    PlayerPrefs.SetInt("GhostRoadSprite", roadIndex);
+
+                    int bestLevel = PlayerPrefs.GetInt("BestLevel", 0);
+                    if (currentLevelIndex > bestLevel)
+                    {
+                        bestLevel = currentLevelIndex;
+                        PlayerPrefs.SetInt("BestLevel", bestLevel);
+                    }
                 }
+                else
+                {
+                    PlayerPrefs.SetInt("PlaneLevelIndex", currentLevelIndex);
+                    int roadIndex = PlayerPrefs.GetInt("PlaneRoadSprite", 0);
+                    roadIndex++;
+                    if (roadIndex == 3)
+                    {
+                        roadIndex = 0;
+                    }
+                    PlayerPrefs.SetInt("PlaneRoadSprite", roadIndex);
+
+                    int bestLevel = PlayerPrefs.GetInt("PlaneBestLevel", 0);
+                    if (currentLevelIndex > bestLevel)
+                    {
+                        bestLevel = currentLevelIndex;
+                        PlayerPrefs.SetInt("PlaneBestLevel", bestLevel);
+                    }
+                }
+                    
 
                 StartCoroutine(ShowWinPanelAndLoadNextLevel());
             }
@@ -104,7 +132,11 @@ public class PlayerTriggerDetector : MonoBehaviour
         gameAudioController.PLayLelveCompleteSound();
         Destroy(levelPassed, 1.9f);
         yield return new WaitForSeconds(2.5f);
-        SceneManager.LoadScene("GhostGame");
+
+        if (SceneManager.GetActiveScene().name == "GhostGame")
+            SceneManager.LoadScene("GhostGame");
+        else
+            SceneManager.LoadScene("PlaneGame");
     }
 
     private IEnumerator ShowLosePanelAndReloadLevel()
@@ -121,6 +153,10 @@ public class PlayerTriggerDetector : MonoBehaviour
         Destroy(levelFailed, 1.9f);
         
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("GhostGame");
+
+        if (SceneManager.GetActiveScene().name == "GhostGame")
+            SceneManager.LoadScene("GhostGame");
+        else
+            SceneManager.LoadScene("PlaneGame");
     }
 }

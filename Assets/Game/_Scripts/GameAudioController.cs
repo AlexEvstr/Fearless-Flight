@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameAudioController : MonoBehaviour
@@ -51,5 +50,4 @@ public class GameAudioController : MonoBehaviour
     {
         _audioSource.PlayOneShot(_loseSound);
     }
-
 }

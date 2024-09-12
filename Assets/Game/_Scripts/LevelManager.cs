@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class LevelManager : MonoBehaviour
@@ -9,7 +10,11 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        currentLevelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
+        if (SceneManager.GetActiveScene().name == "GhostGame")
+            currentLevelIndex = PlayerPrefs.GetInt("LevelIndex", 0);
+        else
+            currentLevelIndex = PlayerPrefs.GetInt("PlaneLevelIndex", 0);
+
         if (currentLevelIndex +1 < 10)
         {
             levelText.text = $"00{currentLevelIndex + 1}";

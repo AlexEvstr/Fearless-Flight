@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class TutorialNavigator : MonoBehaviour
 {
@@ -185,6 +183,9 @@ public class TutorialNavigator : MonoBehaviour
 
     public void CloseTutotial()
     {
-        SceneManager.LoadScene("GhostMenu");
+        if (SceneManager.GetActiveScene().name == "GhostMenu")
+            SceneManager.LoadScene("GhostMenu");
+        else
+            SceneManager.LoadScene("PlaneMenu");
     }
 }

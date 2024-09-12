@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float moveSpeed = 2f;  // Скорость движения персонажа
+    private float moveSpeed = 2f;
 
-    // Ссылки на компоненты
     private Animator animator;
     private Transform playerTransform;
     private AudioSource footStepAudio;
@@ -18,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
         playerTransform = GetComponent<Transform>();
     }
 
-    // Публичный метод для движения вверх
     public void MoveUp()
     {
         if (!isMoving)
@@ -28,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Публичный метод для движения вниз
     public void MoveDown()
     {
         if (!isMoving)
@@ -38,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Публичный метод для движения влево
     public void MoveLeft()
     {
         if (!isMoving)
@@ -48,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Публичный метод для движения вправо
     public void MoveRight()
     {
         if (!isMoving)
@@ -58,23 +53,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Корутина для движения в течение 3 секунд в выбранном направлении
     IEnumerator MoveInDirection(Vector2 direction)
     {
         footStepAudio.Play();
         isMoving = true;
-        float duration = 3f;  // Продолжительность движения
+        float duration = 3f;
         float elapsedTime = 0f;
 
         while (elapsedTime < duration && isMoving)
         {
-            // Перемещаем персонажа вдоль осей X и Y в 2D
             playerTransform.Translate(direction * moveSpeed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        // После завершения движения остановим анимацию
         StopMovement();
         isMoving = false;
         footStepAudio.Stop();
@@ -83,7 +75,6 @@ public class PlayerMovement : MonoBehaviour
     public void StopMovement()
     {
         isMoving = false;
-        // Если корутина движения запущена, останавливаем ее
 
         animator.ResetTrigger("MoveUp");
         animator.ResetTrigger("MoveDown");
