@@ -15,7 +15,10 @@ public class GameAudioController : MonoBehaviour
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        StartCoroutine(PlayPreGameGhostSound());
+        
+
+        string shouldShowPreGame = PlayerPrefs.GetString("ShouldShowPreGame", "yes");
+        if (shouldShowPreGame == "yes") StartCoroutine(PlayPreGameGhostSound());
     }
 
     private IEnumerator PlayPreGameGhostSound()
