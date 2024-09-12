@@ -50,9 +50,7 @@ public class MainGameGhostController : MonoBehaviour
 
     public void ReloadGame()
     {
-        if (SceneManager.GetActiveScene().name == "GhostGame")
-            SceneManager.LoadScene("GhostGame");
-        else
-            SceneManager.LoadScene("PlaneMenu");
+        
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

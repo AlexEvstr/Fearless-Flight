@@ -62,7 +62,7 @@ public class PlayerTriggerDetector : MonoBehaviour
                     PlayerPrefs.SetInt("LevelIndex", currentLevelIndex);
                     int roadIndex = PlayerPrefs.GetInt("GhostRoadSprite", 0);
                     roadIndex++;
-                    if (roadIndex == 3)
+                    if (roadIndex == 4)
                     {
                         roadIndex = 0;
                     }
@@ -81,7 +81,7 @@ public class PlayerTriggerDetector : MonoBehaviour
                     PlayerPrefs.SetInt("PlaneLevelIndex", currentLevelIndex);
                     int roadIndex = PlayerPrefs.GetInt("PlaneRoadSprite", 0);
                     roadIndex++;
-                    if (roadIndex == 3)
+                    if (roadIndex == 4)
                     {
                         roadIndex = 0;
                     }
