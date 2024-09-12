@@ -13,6 +13,7 @@ public class PlayerTriggerDetector : MonoBehaviour
     [SerializeField] LevelManager _levelManager;
     [SerializeField] private GameObject _endOfGame;
     [SerializeField] private Button[] _buttons;
+    [SerializeField] private GameAudioController gameAudioController;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class PlayerTriggerDetector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            gameAudioController.PlayEnemyCollision();
             foreach (var item in _buttons)
             {
                 item.gameObject.SetActive(false);
@@ -40,6 +42,7 @@ public class PlayerTriggerDetector : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Key"))
         {
+            gameAudioController.PlayKeyCOllectSound();
             _playerMovement.StopMovement();
             Destroy(collision.gameObject);
             _isTriggered = true;
@@ -98,13 +101,15 @@ public class PlayerTriggerDetector : MonoBehaviour
         }
         _canvasGroup.alpha = 1;
         GameObject levelPassed = Instantiate(_levelPassedPrefab);
+        gameAudioController.PLayLelveCompleteSound();
         Destroy(levelPassed, 1.9f);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene("GhostGame");
     }
 
     private IEnumerator ShowLosePanelAndReloadLevel()
     {
+        gameAudioController.PlayLoseSound();
         _canvasGroup.alpha = 0;
         while (_canvasGroup.alpha < 1)
         {
@@ -114,7 +119,8 @@ public class PlayerTriggerDetector : MonoBehaviour
         _canvasGroup.alpha = 1;
         GameObject levelFailed = Instantiate(_levelFailedPrefab);
         Destroy(levelFailed, 1.9f);
-        yield return new WaitForSeconds(2.0f);
+        
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("GhostGame");
     }
 }

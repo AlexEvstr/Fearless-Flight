@@ -8,12 +8,12 @@ public class PlayerMovement : MonoBehaviour
     // Ссылки на компоненты
     private Animator animator;
     private Transform playerTransform;
-
+    private AudioSource footStepAudio;
     private bool isMoving = false;
 
     void Awake()
     {
-        // Инициализация компонентов
+        footStepAudio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
     }
@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     // Корутина для движения в течение 3 секунд в выбранном направлении
     IEnumerator MoveInDirection(Vector2 direction)
     {
+        footStepAudio.Play();
         isMoving = true;
         float duration = 3f;  // Продолжительность движения
         float elapsedTime = 0f;
@@ -76,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         // После завершения движения остановим анимацию
         StopMovement();
         isMoving = false;
+        footStepAudio.Stop();
     }
 
     public void StopMovement()

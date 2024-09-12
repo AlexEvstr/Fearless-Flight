@@ -11,11 +11,15 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject _menuGroup;
     [SerializeField] private GameObject _settingsGroup;
     [SerializeField] private GameObject _tutorialGroup;
+    [SerializeField] private AudioClip _ckickSound;
+    private AudioSource _audioSource;
 
     private int _backgroundIndex;
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
+
         PlayerPrefs.SetString("ShouldShowPreGame", "yes");
         _backgroundIndex = PlayerPrefs.GetInt("BackgroundIndex", 0);
         _background.sprite = _backgroundSprites[_backgroundIndex];
@@ -29,6 +33,11 @@ public class MenuController : MonoBehaviour
         {
             audioOn.color = new Color(1, 1, 1, 0.3f);
         }
+    }
+
+    public void PlayClickSound()
+    {
+        _audioSource.PlayOneShot(_ckickSound);
     }
 
     public void OpenGhostGame()
