@@ -74,6 +74,7 @@ public class PlayerTriggerDetector : MonoBehaviour
                         bestLevel = currentLevelIndex;
                         PlayerPrefs.SetInt("BestLevel", bestLevel);
                     }
+                    StartCoroutine(ShowWinPanelAndLoadNextLevel());
                 }
                 else
                 {
@@ -92,10 +93,11 @@ public class PlayerTriggerDetector : MonoBehaviour
                         bestLevel = currentLevelIndex;
                         PlayerPrefs.SetInt("PlaneBestLevel", bestLevel);
                     }
+                    StartCoroutine(ShowWinPanelAndLoadNextLevel());
                 }
                     
 
-                StartCoroutine(ShowWinPanelAndLoadNextLevel());
+                
             }
             else
             {
@@ -108,26 +110,37 @@ public class PlayerTriggerDetector : MonoBehaviour
 
     private IEnumerator ShowEndOfGame()
     {
-        _canvasGroup.alpha = 0;
-        while (_canvasGroup.alpha < 1)
+        _canvasGroup.alpha = 0f;
+        float duration = 1f;
+        float elapsedTime = 0f;
+
+        while (_canvasGroup.alpha < 1f)
         {
-            _canvasGroup.alpha += 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            elapsedTime += Time.deltaTime;
+            _canvasGroup.alpha = Mathf.Clamp01(elapsedTime / duration);
+            yield return null;
         }
-        _canvasGroup.alpha = 1;
+
+        _canvasGroup.alpha = 1f;
 
         _endOfGame.SetActive(true);
     }
 
     private IEnumerator ShowWinPanelAndLoadNextLevel()
     {
-        _canvasGroup.alpha = 0;
-        while (_canvasGroup.alpha < 1)
+        _canvasGroup.alpha = 0f;
+        float duration = 1f;
+        float elapsedTime = 0f;
+
+        while (_canvasGroup.alpha < 1f)
         {
-            _canvasGroup.alpha += 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            elapsedTime += Time.deltaTime;
+            _canvasGroup.alpha = Mathf.Clamp01(elapsedTime / duration);
+            yield return null;
         }
-        _canvasGroup.alpha = 1;
+
+        _canvasGroup.alpha = 1f;
+
         GameObject levelPassed = Instantiate(_levelPassedPrefab);
         gameAudioController.PLayLelveCompleteSound();
         Destroy(levelPassed, 1.9f);
@@ -142,13 +155,19 @@ public class PlayerTriggerDetector : MonoBehaviour
     private IEnumerator ShowLosePanelAndReloadLevel()
     {
         gameAudioController.PlayLoseSound();
-        _canvasGroup.alpha = 0;
-        while (_canvasGroup.alpha < 1)
+
+        _canvasGroup.alpha = 0f;
+        float duration = 1f;
+        float elapsedTime = 0f;
+
+        while (_canvasGroup.alpha < 1f)
         {
-            _canvasGroup.alpha += 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            elapsedTime += Time.deltaTime;
+            _canvasGroup.alpha = Mathf.Clamp01(elapsedTime / duration);
+            yield return null;
         }
-        _canvasGroup.alpha = 1;
+
+        _canvasGroup.alpha = 1f;
         GameObject levelFailed = Instantiate(_levelFailedPrefab);
         Destroy(levelFailed, 1.9f);
         

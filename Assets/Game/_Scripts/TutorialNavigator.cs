@@ -56,48 +56,70 @@ public class TutorialNavigator : MonoBehaviour
     private IEnumerator GoTo2Screen()
     {
         yield return new WaitForSeconds(2.0f);
-        _canvasGroup.alpha = 0;
-        while (_canvasGroup.alpha < 1)
+        _canvasGroup.alpha = 0f;
+        float duration = 1f;
+        float elapsedTime = 0f;
+
+        while (_canvasGroup.alpha < 1f)
         {
-            _canvasGroup.alpha += 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            elapsedTime += Time.deltaTime;
+            _canvasGroup.alpha = Mathf.Clamp01(elapsedTime / duration);
+            yield return null;
         }
-        _canvasGroup.alpha = 1;
-        
+
+        _canvasGroup.alpha = 1f;
+
         _tutorialScreens[1].SetActive(true);
 
         yield return new WaitForSeconds(0.5f);
 
-        while (_canvasGroup.alpha > 0)
+        _canvasGroup.alpha = 1f;
+        float newduration = 0.5f;
+        float newelapsedTime = 0f;
+
+        while (_canvasGroup.alpha > 0f)
         {
-            _canvasGroup.alpha -= 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            newelapsedTime += Time.deltaTime;
+            _canvasGroup.alpha = Mathf.Clamp01(1f - (newelapsedTime / newduration));
+            yield return null;
         }
-        _canvasGroup.alpha = 0;
+
+        _canvasGroup.alpha = 0f;
         _tutorialScreens[0].SetActive(false);
     }
 
     private IEnumerator GoTo3Screen()
     {
         yield return new WaitForSeconds(2.0f);
-        _canvasGroup.alpha = 0;
-        while (_canvasGroup.alpha < 1)
+        _canvasGroup.alpha = 0f;
+        float duration = 1f;
+        float elapsedTime = 0f;
+
+        while (_canvasGroup.alpha < 1f)
         {
-            _canvasGroup.alpha += 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            elapsedTime += Time.deltaTime;
+            _canvasGroup.alpha = Mathf.Clamp01(elapsedTime / duration);
+            yield return null;
         }
-        _canvasGroup.alpha = 1;
-        
+
+        _canvasGroup.alpha = 1f;
+
         _tutorialScreens[2].SetActive(true);
 
         yield return new WaitForSeconds(0.5f);
 
-        while (_canvasGroup.alpha > 0)
+        _canvasGroup.alpha = 1f;
+        float newduration = 0.5f;
+        float newelapsedTime = 0f;
+
+        while (_canvasGroup.alpha > 0f)
         {
-            _canvasGroup.alpha -= 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            newelapsedTime += Time.deltaTime;
+            _canvasGroup.alpha = Mathf.Clamp01(1f - (newelapsedTime / newduration));
+            yield return null;
         }
-        _canvasGroup.alpha = 0;
+
+        _canvasGroup.alpha = 0f;
         _tutorialScreens[1].SetActive(false);
     }
 

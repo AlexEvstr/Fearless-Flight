@@ -83,5 +83,4 @@ public class MenuLevelChanger : MonoBehaviour
         if (_levelIndex > 0) _prevLevelBtn.interactable = true;
         else _prevLevelBtn.interactable = false;
     }
-
 }

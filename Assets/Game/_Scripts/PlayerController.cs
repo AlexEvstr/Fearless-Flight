@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
     void EnterRoom(int x, int y)
     {
         _player.transform.position = Vector2.zero;
-        TurnOnButtons();
 
         Room currentRoom = rooms[x, y];
 
@@ -170,12 +169,18 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator FadeToBlack()
     {
-        while (fadeCanvas.alpha < 1)
+        fadeCanvas.alpha = 0f;
+        float duration = 1f;
+        float elapsedTime = 0f;
+
+        while (fadeCanvas.alpha < 1f)
         {
-            fadeCanvas.alpha += Time.deltaTime;
+            elapsedTime += Time.deltaTime;
+            fadeCanvas.alpha = Mathf.Clamp01(elapsedTime / duration);
             yield return null;
         }
-        fadeCanvas.alpha = 1;
+
+        fadeCanvas.alpha = 1f;
 
         EnterRoom(playerX, playerY);
         StartCoroutine(FadeToClear());
@@ -183,11 +188,19 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator FadeToClear()
     {
-        while (fadeCanvas.alpha > 0)
+        fadeCanvas.alpha = 1f;
+        float duration = 0.5f;
+        float elapsedTime = 0f;
+
+        while (fadeCanvas.alpha > 0f)
         {
-            fadeCanvas.alpha -= Time.deltaTime;
+            elapsedTime += Time.deltaTime;
+            fadeCanvas.alpha = Mathf.Clamp01(1f - (elapsedTime / duration));
             yield return null;
         }
-        fadeCanvas.alpha = 0;
+
+        fadeCanvas.alpha = 0f;
+
+        TurnOnButtons();
     }
 }

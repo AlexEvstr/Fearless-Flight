@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/Enter.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Game/Scenes/GhostMenu.unity
+    guid: 46ec4f24d413f4387a1afc196227a2e6
+  - enabled: 1
+    path: Assets/Game/Scenes/GhostGame.unity
+    guid: b4a245ad68aaa4e4c93c9e4ad66238a4
+  - enabled: 1
+    path: Assets/Game/Scenes/PlaneMenu.unity
+    guid: 5f903ac0d7fa140aabda9af81956c7f2
+  - enabled: 1
+    path: Assets/Game/Scenes/PlaneGame.unity
+    guid: da673c379c3494842bc41f3bcde7e01f
   m_configObjects: {}

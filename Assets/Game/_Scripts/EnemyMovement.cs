@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private float _speed = 2.5f;
+    private float _speed = 1f;
 
     private void Start()
     {
@@ -14,24 +14,21 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator MoveToPlayer(GameObject player)
     {
-        while(true)
+        while (true)
         {
             Vector2 currentPosition = transform.position;
             Vector2 targetPosition = player.transform.position;
+
             transform.position = Vector2.MoveTowards(currentPosition, targetPosition, _speed * Time.deltaTime);
 
-            if (SceneManager.GetActiveScene().name == "PlaneGame")
+            if (SceneManager.GetActiveScene().name == "PlaneGame" || SceneManager.GetActiveScene().name == "PlaneMenu")
             {
                 Vector2 direction = targetPosition - currentPosition;
-
-                // Вычисляем угол для поворота и добавляем корректировку в 90 градусов
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
-
-                // Поворачиваем врага в сторону игрока с корректировкой
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
             }
 
-            yield return new WaitForSeconds(0.01f);
+            yield return null;
         }
     }
 }

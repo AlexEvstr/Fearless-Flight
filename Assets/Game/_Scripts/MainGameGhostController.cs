@@ -26,12 +26,18 @@ public class MainGameGhostController : MonoBehaviour
     private IEnumerator ShowGame()
     {
         yield return new WaitForSeconds(2f);
-        while (fadeCanvas.alpha > 0)
+        fadeCanvas.alpha = 1f;
+        float duration = 0.5f;
+        float elapsedTime = 0f;
+
+        while (fadeCanvas.alpha > 0f)
         {
-            fadeCanvas.alpha -= 0.01f;
-            yield return new WaitForSeconds(0.01f);
+            elapsedTime += Time.deltaTime;
+            fadeCanvas.alpha = Mathf.Clamp01(1f - (elapsedTime / duration));
+            yield return null;
         }
-        fadeCanvas.alpha = 0;
+
+        fadeCanvas.alpha = 0f;
     }
 
     public void BackToHome()
